@@ -1,7 +1,7 @@
 export class StringCalculator {
     add(input: string): number {
         if (input === "") return 0;
-        if (!input.includes(",")) return parseInt(input, 10);
-        return 0;
+        const parts = input.split(",").map(Number);
+        return parts.reduce((sum, n) => sum + n, 0);
     }
 }
