@@ -35,6 +35,11 @@ describe("String Calculator", () => {
     expect(() => calculator.add("1,-2,3")).toThrow("negative numbers not allowed: -2");
     expect(() => calculator.add("//;\n4;-5;6")).toThrow("negative numbers not allowed: -5");
     expect(() => calculator.add("-1,-2,-3")).toThrow("negative numbers not allowed: -1, -2, -3");
+  });
+
+  it("raises an error for invalid delimiter formats", () => {
+    expect(() => calculator.add("//{+}1+2+")).toThrow("Invalid Input");
+    expect(() => calculator.add("//-1-2")).toThrow("Invalid Input");
 
   });
 
