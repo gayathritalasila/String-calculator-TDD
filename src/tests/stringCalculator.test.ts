@@ -23,10 +23,19 @@ describe("String Calculator", () => {
 
   it("handles new lines as delimiters", () => {
     expect(calculator.add("1\n2,3")).toBe(6);
+    expect(calculator.add("4\n5,6")).toBe(15);
   });
 
   it("supports custom delimiters defined in the input", () => {
     expect(calculator.add("//;\n1;2")).toBe(3);
+    expect(calculator.add("//|\n2|3|4")).toBe(9);
+  });
+
+  it("raises an exception for negative numbers", () => {
+    expect(() => calculator.add("1,-2,3")).toThrow("negative numbers not allowed: -2");
+    expect(() => calculator.add("//;\n4;-5;6")).toThrow("negative numbers not allowed: -5");
+    expect(() => calculator.add("-1,-2,-3")).toThrow("negative numbers not allowed: -1, -2, -3");
+
   });
 
 });
