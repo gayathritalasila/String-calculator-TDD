@@ -48,6 +48,11 @@ describe("String Calculator", () => {
     expect(() => calculator.add("//-1-2")).toThrow("Invalid Input");
   });
 
+  it("supports + as a valid delimiter if explicitly set", () => {
+    expect(calculator.add("//+\n1+2")).toBe(3);
+    expect(() => calculator.add("1+2")).toThrow("Invalid Input");
+  });
+
   it("raises an error for consecutive delimiters", () => {
     expect(() => calculator.add("//;\n1;;2")).toThrow("Invalid Input");
     expect(() => calculator.add("//|\n3||4")).toThrow("Invalid Input");
