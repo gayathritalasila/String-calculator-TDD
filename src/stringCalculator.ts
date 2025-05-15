@@ -7,14 +7,11 @@ export class StringCalculator {
         if (input.startsWith("//")) {
             const match = input.match(/^\/\/(.+)\n([\s\S]*)$/);
 
-            // If the format does not match exactly — throw error
             if (!match) {
                 throw new Error("Invalid Input");
             }
-
             const [, delimLine, numbers] = match;
 
-            // Reject delimiters containing curly braces (like {+}) or empty delimiters
             if (!delimLine || /[{}]/.test(delimLine)) {
                 throw new Error("Invalid Input");
             }
