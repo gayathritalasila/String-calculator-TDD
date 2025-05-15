@@ -16,4 +16,9 @@ describe("String Calculator", () => {
     expect(calculator.add("5")).toBe(5);
   });
 
+  it("returns the sum of two numbers", () => {
+    expect(calculator.add("1,2")).toBe(3);
+    expect(calculator.add("4,5")).toBe(9);
+  });
+
 });
