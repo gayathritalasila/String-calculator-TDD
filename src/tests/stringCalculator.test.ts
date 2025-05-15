@@ -43,4 +43,9 @@ describe("String Calculator", () => {
 
   });
 
+  it("treats //-1-2 correctly based on delimiter rule", () => {
+    expect(calculator.add("//-\n1-2")).toBe(3);
+    expect(() => calculator.add("//-1-2")).toThrow("Invalid Input");
+  });
+
 });
