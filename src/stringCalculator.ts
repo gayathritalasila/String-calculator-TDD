@@ -1,6 +1,6 @@
 export class StringCalculator {
     add(input: string): number {
-        throw new Error("Not implemented");
+        if (input === "") return 0;
+        return 0;
     }
-  }
-  
+}
