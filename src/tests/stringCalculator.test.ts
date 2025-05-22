@@ -58,4 +58,8 @@ describe("String Calculator", () => {
     expect(() => calculator.add("//|\n3||4")).toThrow("Invalid Input");
   });
 
+  it("raise an error if characters are present", ()=>{
+    expect(() => calculator.add("1,23,er,5,4,h")).toThrow("characters are not allowed: er, h");
+  });
+
 });
