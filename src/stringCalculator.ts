@@ -3,10 +3,18 @@ export class StringCalculator {
         if (input === "") return 0;
         const { delimiter, numbers } = this.extractDelimiterAndNumbers(input);
         this.validateInput(numbers, delimiter);
+        const characters = numbers.split(delimiter).filter((n)=>{
+            if(isNaN(n as unknown as number)){
+                return n;
+            }
+        })
         const parts = numbers.split(delimiter).map(Number);
         const negatives = parts.filter((n) => n < 0);
         if (negatives.length > 0) {
             throw new Error(`negative numbers not allowed: ${negatives.join(", ")}`);
+        }
+        if(characters.length > 0){
+            throw new Error(`characters are not allowed: ${characters.join(", ")}`);
         }
         return parts.reduce((sum, num) => sum + num, 0);
     }
